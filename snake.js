@@ -30,6 +30,8 @@ window.snake.theme = function () {
         const filter = `hue-rotate(${drawImage_rot.next()}deg)`;
 
         for (const mode of modes) mode.style.filter = bar.style.filter = that.filter = filter;
+
+        bar.style.filter += 'brightness(120%)';
       }
 
       return target.apply(that, args);
@@ -39,6 +41,7 @@ window.snake.theme = function () {
   prototype.fillRect = new Proxy(prototype.fillRect, {
     apply(target, that, args) {
       if (that.fillStyle !== '#578a34') that.filter = `hue-rotate(${fillRect_rot.next()}deg)`;
+      else that.filter += 'brightness(120%)';
 
       return target.apply(that, args);
     }
